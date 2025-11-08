@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1c75204778b360133c457c3b70e40583 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+                <h3 align="center" style="font-size:16px"><b>Heatmap + Puntos: 2025-04-02 23:00</b></h3>
+                <p align="center">APs: 1 | Clientes totales: 0</p>
+                <p align="center" style="font-size:12px">💡 Los puntos muestran APs individuales (color = carga de clientes)</p>
+            
+    
+            <div style="position: fixed; 
+                        top: 10px; left: 50px; width: 200px; height: 120px; 
+                        background-color: white; border:2px solid grey; z-index:9999; 
+                        font-size:12px; padding: 10px">
+            <p><b>Leyenda - Clientes por AP:</b></p>
+            <p><span style="color:red">●</span> >10 clientes</p>
+            <p><span style="color:orange">●</span> 6-10 clientes</p>
+            <p><span style="color:green">●</span> 1-5 clientes</p>
+            <p><span style="color:gray">●</span> 0 clientes</p>
+            </div>
+            
+    
+            <div class="folium-map" id="map_1c75204778b360133c457c3b70e40583" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1c75204778b360133c457c3b70e40583 = L.map(
+                "map_1c75204778b360133c457c3b70e40583",
+                {
+                    center: [41.502666092204976, 2.1065693102329037],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ff4c61642f82fc60a288612fc7054a3d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ff4c61642f82fc60a288612fc7054a3d.addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+            var circle_marker_37ec61dc51eb6f1832a05728f3669ee4 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_6296027938e500eddc5a148f53eade8c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5433d84f4947018b4addb1446f31c3f3 = $(`<div id="html_5433d84f4947018b4addb1446f31c3f3" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_6296027938e500eddc5a148f53eade8c.setContent(html_5433d84f4947018b4addb1446f31c3f3);
+            
+        
+
+        circle_marker_37ec61dc51eb6f1832a05728f3669ee4.bindPopup(popup_6296027938e500eddc5a148f53eade8c)
+        ;
+
+        
+    
+    
+            circle_marker_37ec61dc51eb6f1832a05728f3669ee4.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b40f5691edd6e4102cf21b271f724dfc = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_ffed11f59452717f29282e673f7aaf36 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_36132525b2672f43ae693e2f53528bce = $(`<div id="html_36132525b2672f43ae693e2f53528bce" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_ffed11f59452717f29282e673f7aaf36.setContent(html_36132525b2672f43ae693e2f53528bce);
+            
+        
+
+        circle_marker_b40f5691edd6e4102cf21b271f724dfc.bindPopup(popup_ffed11f59452717f29282e673f7aaf36)
+        ;
+
+        
+    
+    
+            circle_marker_b40f5691edd6e4102cf21b271f724dfc.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3f35f6ac82caa2b890c74f85e1d1b8ad = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_2757f5be189a57697e8028ed8ec21791 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_95ea0403188da2562fd175b65755c950 = $(`<div id="html_95ea0403188da2562fd175b65755c950" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_2757f5be189a57697e8028ed8ec21791.setContent(html_95ea0403188da2562fd175b65755c950);
+            
+        
+
+        circle_marker_3f35f6ac82caa2b890c74f85e1d1b8ad.bindPopup(popup_2757f5be189a57697e8028ed8ec21791)
+        ;
+
+        
+    
+    
+            circle_marker_3f35f6ac82caa2b890c74f85e1d1b8ad.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_511798c11da18a7c160fa189aca72a58 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_63e66dfd38119de9a363851c33c9b1de = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a2fa62dd99694f533508e808fb2b6042 = $(`<div id="html_a2fa62dd99694f533508e808fb2b6042" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_63e66dfd38119de9a363851c33c9b1de.setContent(html_a2fa62dd99694f533508e808fb2b6042);
+            
+        
+
+        circle_marker_511798c11da18a7c160fa189aca72a58.bindPopup(popup_63e66dfd38119de9a363851c33c9b1de)
+        ;
+
+        
+    
+    
+            circle_marker_511798c11da18a7c160fa189aca72a58.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c5d63403209bf82503b90b24db478179 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_2942c8aeaae4074a41318e885e38ec39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_52a5a98a598539d04c98ee5e74f149e1 = $(`<div id="html_52a5a98a598539d04c98ee5e74f149e1" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_2942c8aeaae4074a41318e885e38ec39.setContent(html_52a5a98a598539d04c98ee5e74f149e1);
+            
+        
+
+        circle_marker_c5d63403209bf82503b90b24db478179.bindPopup(popup_2942c8aeaae4074a41318e885e38ec39)
+        ;
+
+        
+    
+    
+            circle_marker_c5d63403209bf82503b90b24db478179.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_50b6bf63dab278c0a84034f1420fca88 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_ed2e788ec422bb26694d9260cb9a5ad9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8d4cc0cc70e2da4276ca97bda5697f1 = $(`<div id="html_b8d4cc0cc70e2da4276ca97bda5697f1" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_ed2e788ec422bb26694d9260cb9a5ad9.setContent(html_b8d4cc0cc70e2da4276ca97bda5697f1);
+            
+        
+
+        circle_marker_50b6bf63dab278c0a84034f1420fca88.bindPopup(popup_ed2e788ec422bb26694d9260cb9a5ad9)
+        ;
+
+        
+    
+    
+            circle_marker_50b6bf63dab278c0a84034f1420fca88.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_567e3561fd2156d2dc0acd42cd672f79 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_050f5eb96ccc7cd55f25d937692583aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1bd4a318fd7e8a826d3e94a2bf8ed766 = $(`<div id="html_1bd4a318fd7e8a826d3e94a2bf8ed766" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_050f5eb96ccc7cd55f25d937692583aa.setContent(html_1bd4a318fd7e8a826d3e94a2bf8ed766);
+            
+        
+
+        circle_marker_567e3561fd2156d2dc0acd42cd672f79.bindPopup(popup_050f5eb96ccc7cd55f25d937692583aa)
+        ;
+
+        
+    
+    
+            circle_marker_567e3561fd2156d2dc0acd42cd672f79.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8bac2e5a41d4499fb8c0a2c88f70b759 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_d098aa28e3032c7da3217035f6f0cfd2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9692723b0461d3822ebb3c184aeccdaf = $(`<div id="html_9692723b0461d3822ebb3c184aeccdaf" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_d098aa28e3032c7da3217035f6f0cfd2.setContent(html_9692723b0461d3822ebb3c184aeccdaf);
+            
+        
+
+        circle_marker_8bac2e5a41d4499fb8c0a2c88f70b759.bindPopup(popup_d098aa28e3032c7da3217035f6f0cfd2)
+        ;
+
+        
+    
+    
+            circle_marker_8bac2e5a41d4499fb8c0a2c88f70b759.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_077789c674c2081d42ff13f4af4b129c = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_854c251124cd0ee1bd4f5ddfd4c74b4a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_97a197e0ff746db2b33f6d551da2ffed = $(`<div id="html_97a197e0ff746db2b33f6d551da2ffed" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_854c251124cd0ee1bd4f5ddfd4c74b4a.setContent(html_97a197e0ff746db2b33f6d551da2ffed);
+            
+        
+
+        circle_marker_077789c674c2081d42ff13f4af4b129c.bindPopup(popup_854c251124cd0ee1bd4f5ddfd4c74b4a)
+        ;
+
+        
+    
+    
+            circle_marker_077789c674c2081d42ff13f4af4b129c.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7bc7ac801566b818a70f85047a6a7c18 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_4752f18aa4b65f3ce6676cb4d59078e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7d6fbf80a8119d830e5ed74fb2b1d620 = $(`<div id="html_7d6fbf80a8119d830e5ed74fb2b1d620" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_4752f18aa4b65f3ce6676cb4d59078e3.setContent(html_7d6fbf80a8119d830e5ed74fb2b1d620);
+            
+        
+
+        circle_marker_7bc7ac801566b818a70f85047a6a7c18.bindPopup(popup_4752f18aa4b65f3ce6676cb4d59078e3)
+        ;
+
+        
+    
+    
+            circle_marker_7bc7ac801566b818a70f85047a6a7c18.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_423ba957fb9fe1788603920d4c28b046 = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_86a6f25b625b077fefd9f467bf840f54 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_15383ed13a538a7a3885bc9d5c5cc703 = $(`<div id="html_15383ed13a538a7a3885bc9d5c5cc703" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_86a6f25b625b077fefd9f467bf840f54.setContent(html_15383ed13a538a7a3885bc9d5c5cc703);
+            
+        
+
+        circle_marker_423ba957fb9fe1788603920d4c28b046.bindPopup(popup_86a6f25b625b077fefd9f467bf840f54)
+        ;
+
+        
+    
+    
+            circle_marker_423ba957fb9fe1788603920d4c28b046.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_daa0a414bc2778f6c9a3d9fb7da313ca = L.circleMarker(
+                [41.49901550490308, 2.1068203042999607],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(map_1c75204778b360133c457c3b70e40583);
+        
+    
+        var popup_fa7a694248f00859cda863ad36ad2747 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2aba275a9348fea054465a5b13966d6d = $(`<div id="html_2aba275a9348fea054465a5b13966d6d" style="width: 100.0%; height: 100.0%;">                 <b>AP-IBB03</b><br>                 <hr style="margin: 5px 0;">                 <b>Clientes:</b> 0<br>                 <b>Estado:</b> Up<br>                 <b>CPU:</b> 4%<br>                 <b>Grupo:</b> Bellaterra<br>                 <b>Hora:</b> 23:00                 </div>`)[0];
+                popup_fa7a694248f00859cda863ad36ad2747.setContent(html_2aba275a9348fea054465a5b13966d6d);
+            
+        
+
+        circle_marker_daa0a414bc2778f6c9a3d9fb7da313ca.bindPopup(popup_fa7a694248f00859cda863ad36ad2747)
+        ;
+
+        
+    
+    
+            circle_marker_daa0a414bc2778f6c9a3d9fb7da313ca.bindTooltip(
+                `<div>
+                     AP-IBB03 - 0 clientes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
