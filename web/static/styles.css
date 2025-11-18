@@ -1,0 +1,734 @@
+:root {
+
+    --uab-green: #00843D;
+
+    --uab-light-green: #E6F2EC;
+
+}
+
+
+
+body {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: #f8f9fa;
+
+}
+
+
+
+.navbar-brand {
+
+    color: var(--uab-green) !important;
+
+    font-weight: bold;
+
+    font-size: 1.5rem;
+
+}
+
+
+
+.nav-link {
+
+    color: #333;
+
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+
+}
+
+
+
+.nav-link:hover {
+
+    color: var(--uab-green);
+
+}
+
+
+
+.nav-link.active {
+
+    color: var(--uab-green);
+
+    border-bottom: 2px solid var(--uab-green);
+
+}
+
+
+
+.page-title {
+
+    color: var(--uab-green);
+
+    margin-bottom: 1.5rem;
+
+    font-weight: 600;
+
+}
+
+
+
+.card {
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    margin-bottom: 1.5rem;
+
+    border: none;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+
+
+.card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+}
+
+
+
+.card-header {
+
+    background-color: var(--uab-green);
+
+    color: white;
+
+    border-radius: 10px 10px 0 0 !important;
+
+    font-weight: 600;
+
+    padding: 1rem 1.5rem;
+
+}
+
+
+
+.metric-card {
+
+    text-align: center;
+
+    padding: 1.5rem;
+
+    transition: transform 0.3s;
+
+}
+
+
+
+.metric-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+
+.metric-value {
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color: var(--uab-green);
+
+    margin-bottom: 0.5rem;
+
+}
+
+
+
+.metric-label {
+
+    font-size: 0.9rem;
+
+    color: #6c757d;
+
+    font-weight: 500;
+
+}
+
+
+
+#heatmap-real, 
+
+#heatmap-real iframe, 
+
+#heatmap-real .folium-map {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    border: none;
+
+    border-radius: 10px;
+
+}
+
+
+
+.heatmap-container {
+
+    background-color: #f8f9fa;
+
+    border-radius: 10px;
+
+    padding: 1.5rem;
+
+    height: 600px;
+
+    min-height: 600px;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px dashed #dee2e6;
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.heatmap-container:hover {
+
+    border-color: var(--uab-green);
+
+    background-color: var(--uab-light-green);
+
+}
+
+
+
+.heatmap-placeholder {
+
+    text-align: center;
+
+    color: #6c757d;
+
+}
+
+
+
+.heatmap-placeholder i {
+
+    font-size: 3rem;
+
+    margin-bottom: 1rem;
+
+    color: var(--uab-green);
+
+}
+
+
+
+.heatmap-placeholder h4 {
+
+    color: var(--uab-green);
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.footer {
+
+    background-color: var(--uab-green);
+
+    color: white;
+
+    padding: 1.5rem 0;
+
+    margin-top: 3rem;
+
+}
+
+
+
+.alert {
+
+    border-radius: 10px;
+
+    border: none;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.alert-info {
+
+    background-color: #e6f2ec;
+
+    color: var(--uab-green);
+
+    border-left: 4px solid var(--uab-green);
+
+}
+
+
+
+.alert-warning {
+
+    background-color: #fff3cd;
+
+    color: #856404;
+
+    border-left: 4px solid #ffc107;
+
+}
+
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+
+    .metric-value {
+
+        font-size: 1.5rem;
+
+    }
+
+    
+
+    .heatmap-container {
+
+        height: 300px;
+
+        padding: 1rem;
+
+    }
+
+    
+
+    .page-title {
+
+        font-size: 1.5rem;
+
+    }
+
+}
+
+
+
+/* Animaciones para transiciones de página */
+
+.page-content {
+
+    animation: fadeIn 0.5s ease-in-out;
+
+}
+
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+
+/* Mejoras para las tarjetas de métricas en dispositivos pequeños */
+
+@media (max-width: 576px) {
+
+    .col-md-3 {
+
+        margin-bottom: 1rem;
+
+    }
+
+    
+
+    .metric-card {
+
+        padding: 1rem;
+
+    }
+
+}
+
+/* 🔥 CORRECCIÓN PARA HEATMAP HORIZONTAL */
+#heatmap-intermedio-real,
+#heatmap-intermedio-real iframe,
+#heatmap-intermedio-real .folium-map {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 600px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Forzar el viewport del mapa para que sea horizontal */
+#heatmap-intermedio-real .folium-map,
+#heatmap-intermedio-real .leaflet-container {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 600px;
+    aspect-ratio: 16/9 !important;
+}
+
+/* Asegurar que el iframe ocupe todo el espacio disponible */
+#heatmap-intermedio-real iframe {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 600px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Contenedor principal del heatmap - forzar relación de aspecto horizontal */
+.heatmap-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: 600px;
+    min-height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #dee2e6;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Relación de aspecto forzada para horizontal */
+.heatmap-container::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+/* Contenido del heatmap */
+.heatmap-container > * {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: calc(100% - 3rem) !important;
+    height: calc(100% - 3rem) !important;
+}
+
+/* Para el heatmap de rookie también */
+#heatmap-real,
+#heatmap-real iframe,
+#heatmap-real .folium-map {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 600px;
+    border: none;
+    border-radius: 10px;
+}
+
+#heatmap-real .folium-map,
+#heatmap-real .leaflet-container {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 600px;
+    aspect-ratio: 16/9 !important;
+}
+
+/* 🔥 ESTILOS PARA EL CHATBOT */
+.chatbot-messages {
+    border-left: 3px solid #00843D;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.chatbot-message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.chatbot-message.user {
+    background: #00843D;
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.chatbot-message.bot {
+    background: white;
+    border: 1px solid #dee2e6;
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chatbot-message .timestamp {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.chatbot-header {
+    border-bottom: 2px solid #0056b3;
+}
+
+#chatbot-input:focus {
+    border-color: #00843D;
+    box-shadow: 0 0 0 0.2rem rgba(0, 132, 61, 0.25);
+}
+
+/* Animaciones para el chatbot */
+#chatbot-container {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔥 ESTILOS DE EMERGENCIA PARA EL BOTÓN */
+#chatbot-toggle {
+    background: linear-gradient(45deg, #ff0000, #ff8800) !important;
+    color: white !important;
+    font-size: 2rem !important;
+    padding: 20px !important;
+    border: 5px solid yellow !important;
+    box-shadow: 0 0 20px red !important;
+    animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 🔥 ESTILOS PARA EL CHATBOT COMO INTERFAZ PRINCIPAL */
+.chat-container {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 3px solid #00843D;
+    padding: 20px;
+}
+
+/* Estilos para los mensajes */
+.message {
+    display: flex;
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.bot-message {
+    justify-content: flex-start;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+
+.bot-message .message-avatar {
+    background: #00843D;
+    color: white;
+}
+
+.user-message .message-avatar {
+    background: #6c757d;
+    color: white;
+}
+
+.message-content {
+    max-width: 70%;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.user-message .message-content {
+    background: #00843D;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message .message-content {
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.message-text {
+    line-height: 1.5;
+}
+
+.message-text strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #00843D;
+}
+
+.user-message .message-text strong {
+    color: white;
+}
+
+.message-text ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.message-text li {
+    margin-bottom: 5px;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 8px;
+    text-align: right;
+}
+
+/* Área de entrada del chat */
+.chat-input-container {
+    background: white !important;
+    border-top: 2px solid #e9ecef !important;
+}
+
+#chatbot-input {
+    border-radius: 25px;
+    padding: 12px 20px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+#chatbot-input:focus {
+    border-color: #00843D;
+    box-shadow: 0 0 0 0.2rem rgba(0, 132, 61, 0.25);
+}
+
+#chatbot-send {
+    border-radius: 25px;
+    padding: 12px 25px;
+    margin-left: 10px;
+}
+
+/* Indicador de escritura */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.typing-indicator .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 10px;
+}
+
+/* Scrollbar personalizado para el chat */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #00843D;
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #006b32;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .message-content {
+        max-width: 85%;
+    }
+    
+    .chat-container {
+        height: 500px;
+    }
+    
+    .chat-messages {
+        padding: 15px;
+    }
+}
+
+/* 🔥 ESTILOS PARA EL CHATBOT COMO INTERFAZ PRINCIPAL */
+.chat-container {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 3px solid #00843D;
+    padding: 20px;
+}
+
+/* ... el resto de tus estilos para mensajes ... */

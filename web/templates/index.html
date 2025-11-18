@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Red WiFi - Hackathon</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome para iconos -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Nuestro CSS personalizado -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+
+                <i class="fas fa-wifi me-2"></i>Dashboard WiFi
+
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link active" href="#" data-page="rookie">Rookie</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#" data-page="intermedio">Intermedio</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#" data-page="avanzado">Avanzado</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Contenido Principal -->
+
+    <div class="container mt-4">
+
+        <!-- Página Rookie (activa por defecto) -->
+
+        <div id="rookie-page" class="page-content">
+
+            <h1 class="page-title">Dashboard Rookie - Estado de la Red WiFi</h1>
+
+            
+
+            <!-- Estado de carga -->
+
+            <div id="loading-indicator" class="alert alert-info">
+
+                <i class="fas fa-spinner fa-spin me-2"></i>Cargando datos de la red...
+
+            </div>
+
+
+
+            <!-- Métricas principales -->
+
+            <div class="row" id="metrics-container" style="display: none;">
+
+                <div class="col-md-6">
+
+                    <div class="card metric-card">
+
+                        <div class="metric-value" id="metric-devices">1.148</div>
+
+                        <div class="metric-label">APs Totales</div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card metric-card">
+
+                        <div class="metric-value" id="metric-reps">957</div>
+
+                        <div class="metric-label">APs Activos</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- Mapa de Calor -->
+
+            <div class="card mt-4">
+
+                <div class="card-header">
+
+                    <i class="fas fa-map me-2"></i>Mapa de Calor de la Red
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="heatmap-container">
+
+                        <div class="heatmap-placeholder">
+
+                            <i class="fas fa-map-marked-alt"></i>
+
+                            <h4>Mapa de Calor</h4>
+
+                            <p>Aquí se integrará el mapa de calor generado con Python</p>
+
+                            <p class="small">APs activos: <strong>957</strong></p>
+
+                            <p class="small">APs totales: <strong>1.148</strong></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- 🔥 GRÁFICOS CON IMÁGENES - PRIMERA FILA -->
+
+            <div class="row mt-4">
+
+                <div class="col-md-6">
+
+                    <div class="card h-100">
+
+                        <div class="card-header bg-primary text-white">
+
+                            <i class="fas fa-chart-bar me-2"></i>Top 15 APs más utilizados
+
+                        </div>
+
+                        <div class="card-body d-flex align-items-center justify-content-center">
+
+                            <img src="{{ url_for('static', filename='img/1.jpeg') }}" 
+
+                                 alt="Top 15 APs más utilizados" 
+
+                                 class="img-fluid rounded"
+
+                                 style="max-height: 300px; width: auto;">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="fas fa-signal me-2"></i>Dispositivos conectados por hora del día
+
+                        </div>
+
+                        <div class="card-body d-flex align-items-center justify-content-center">
+
+                            <img src="{{ url_for('static', filename='img/5.png') }}" 
+
+                                 alt="Dispositivos conectados por hora del día" 
+
+                                 class="img-fluid rounded"
+
+                                 style="max-height: 300px; width: auto;">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 🔥 GRÁFICOS CON IMÁGENES - SEGUNDA FILA -->
+
+            <div class="row mt-4">
+
+                <div class="col-md-6">
+
+                    <div class="card h-100">
+
+                        <div class="card-header bg-warning text-dark">
+
+                            <i class="fas fa-wifi me-2"></i>Distribución de Señal
+
+                        </div>
+
+                        <div class="card-body d-flex align-items-center justify-content-center">
+
+                            <img src="{{ url_for('static', filename='img/3.jpeg') }}" 
+
+                                 alt="Distribución de Señal" 
+
+                                 class="img-fluid rounded"
+
+                                 style="max-height: 300px; width: auto;">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100">
+
+                        <div class="card-header bg-info text-white">
+
+                            <i class="fas fa-chart-pie me-2"></i>Distribución por Banda WiFi
+
+                        </div>
+
+                        <div class="card-body d-flex align-items-center justify-content-center">
+
+                            <img src="{{ url_for('static', filename='img/4.jpeg') }}" 
+
+                                 alt="Distribución por Banda WiFi" 
+
+                                 class="img-fluid rounded"
+
+                                 style="max-height: 300px; width: auto;">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+                <!-- Página Intermedio (oculta por defecto) -->
+        <div id="intermedio-page" class="page-content d-none">
+            <h1 class="page-title">Dashboard Intermedio - Análisis Detallado</h1>
+            
+            <!-- Estado de carga -->
+            <div id="loading-indicator-intermedio" class="alert alert-info">
+                <i class="fas fa-spinner fa-spin me-2"></i>Cargando análisis detallado...
+            </div>
+
+            <!-- Métricas principales -->
+            <div class="row" id="metrics-container-intermedio" style="display: none;">
+                <div class="col-md-6">
+                    <div class="card metric-card">
+                        <div class="metric-value">10.464.577</div>
+                        <div class="metric-label">Registros APs Cargados</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card metric-card">
+                        <div class="metric-value">7.801.382</div>
+                        <div class="metric-label">Clientes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mapa de Calor -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <i class="fas fa-map me-2"></i>Mapa de Calor Intermedio - Análisis por Capas y Horas
+                </div>
+                <div class="card-body">
+                    <div class="heatmap-container">
+                        <div class="heatmap-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h4>Mapa de Calor Intermedio</h4>
+                            <p>Análisis avanzado de la red WiFi por capas y horas</p>
+                            <p class="small">APs activos: <strong>723</strong></p>
+                            <p class="small">Dispositivos: <strong>892</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- 🔥 SOLO UNA GRÁFICA EN INTERMEDIO -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card h-100">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-chart-line me-2"></i>Análisis de Tráfico por Horas
+                        </div>
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <img src="{{ url_for('static', filename='img/5.png') }}" 
+                                 alt="Análisis de Tráfico por Horas" 
+                                 class="img-fluid rounded"
+                                 style="max-height: 400px; width: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+
+               <!-- Página Avanzado (oculta por defecto) -->
+<div id="avanzado-page" class="page-content d-none">
+    <h1 class="page-title">Dashboard Avanzado - ChatBot con Base de Datos</h1>
+    <div class="alert alert-info">
+        <i class="fas fa-robot me-2"></i>
+        Consulta en tiempo real la base de datos WiFi. Escribe tus preguntas sobre APs, clientes y estadísticas.
+    </div>
+
+    <!-- 🔥 CHATBOT COMO INTERFAZ PRINCIPAL -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card chat-container">
+                <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-robot me-2"></i>Asistente WiFi Inteligente
+                        <small class="ms-2">
+                            <i class="fas fa-circle text-success"></i> En línea
+                        </small>
+                    </div>
+                    <div class="badge bg-light text-dark">
+                        <i class="fas fa-database me-1"></i>Conectado a BD
+                    </div>
+                </div>
+                
+                <!-- Área de mensajes del chat - CORREGIR ID -->
+                <div id="chatbot-messages" class="chat-messages p-3">
+                    <!-- Mensaje de bienvenida -->
+                    <div class="message bot-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                <strong>Asistente WiFi</strong>
+                                <p>¡Hola! 👋 Soy tu asistente de análisis WiFi. Puedo consultar la base de datos en tiempo real y responder tus preguntas sobre:</p>
+                                <ul>
+                                    <li>📊 Estado general de la red</li>
+                                    <li>📡 Información de APs y puntos de acceso</li>
+                                    <li>👥 Datos de clientes conectados</li>
+                                    <li>📈 Métricas y estadísticas</li>
+                                    <li>🔍 Análisis avanzados</li>
+                                </ul>
+                                <p>¿En qué puedo ayudarte?</p>
+                            </div>
+                            <div class="message-time" id="welcome-time"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Área de entrada de mensajes - CORREGIR ID -->
+                <div class="chat-input-container p-3 border-top bg-light">
+                    <div class="input-group">
+                        <input type="text" id="chatbot-input" class="form-control" 
+                               placeholder="Escribe tu pregunta sobre la red WiFi... (ej: ¿Cuántos APs hay activos?)"
+                               aria-label="Mensaje del chatbot">
+                        <button id="chatbot-send" class="btn btn-success">
+                            <i class="fas fa-paper-plane me-1"></i>Enviar
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-lightbulb me-1"></i>
+                            Ejemplos: "estado de la red", "clientes conectados", "APs por ubicación", "métricas del dashboard"
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Información adicional -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-info-circle me-2"></i>Información de la Base de Datos
+                </div>
+                <div class="card-body">
+                    <div id="advanced-data">
+                        <p><strong>Estructura de datos disponible:</strong></p>
+                        <ul>
+                            <li>APs: ID, Nombre, Ubicación, Estado, Señal, Clientes</li>
+                            <li>Clientes: MAC, AP, Señal, Tiempo, Protocolo</li>
+                            <li>Estadísticas: Métricas en tiempo real</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <i class="fas fa-question-circle me-2"></i>¿Cómo usar el chat?
+                </div>
+                <div class="card-body">
+                    <p>Puedes preguntar en lenguaje natural:</p>
+                    <ul>
+                        <li>"¿Cuál es el estado de la red?"</li>
+                        <li>"Muestra las métricas actuales"</li>
+                        <li>"¿Cuántos clientes hay conectados?"</li>
+                        <li>"Información sobre los APs activos"</li>
+                        <li>"Analizar los datos recientes"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+
+    <footer class="footer mt-5">
+
+        <div class="container text-center">
+
+            <p class="mb-0">Dashboard Red WiFi - Proyecto Hackathon | Datos en tiempo real</p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Bootstrap JS y dependencias -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Chart.js para gráficos -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Nuestro JavaScript personalizado -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
